@@ -1,6 +1,6 @@
 from setuptools import setup
 
-PACKAGES = ["chialisp_stdlib", "chialisp_stdlib.nightly", "chialisp_stdlib.stable"]
+PACKAGES = ["chiklisp_stdlib", "chiklisp_stdlib.nightly", "chiklisp_stdlib.stable"]
 
 setup(
     packages=PACKAGES,

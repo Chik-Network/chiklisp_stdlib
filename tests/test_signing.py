@@ -3,13 +3,13 @@ from typing import List
 
 import tempfile
 
-from chia_base.bls12_381 import BLSSecretExponent  # type: ignore
-from clvm_rs import Program  # type: ignore
-from chialisp_puzzles import load_puzzle
+from chik_base.bls12_381 import BLSSecretExponent  # type: ignore
+from klvm_rs import Program  # type: ignore
+from chiklisp_puzzles import load_puzzle
 
-import clvm_tools_rs  # type: ignore
+import klvm_tools_rs  # type: ignore
 
-from chialisp_stdlib import NIGHTLY_INCLUDE_DIRECTORY, STABLE_INCLUDE_DIRECTORY
+from chiklisp_stdlib import NIGHTLY_INCLUDE_DIRECTORY, STABLE_INCLUDE_DIRECTORY
 
 Program.set_run_unsafe_max_cost(1 << 31)
 
@@ -24,7 +24,7 @@ def compile_clsp(program_str: str, search_paths: List[PathLike]) -> Program:
     out = tempfile.NamedTemporaryFile()
     in_file.write(program_str)
     in_file.flush()
-    clvm_tools_rs.compile_clvm(
+    klvm_tools_rs.compile_klvm(
         in_file.name, out.name, search_paths=[str(_) for _ in search_paths]
     )
     with open(out.file.name, "r") as f:
