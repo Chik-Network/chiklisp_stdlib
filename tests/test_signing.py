@@ -4,10 +4,10 @@ from typing import List
 import tempfile
 
 from chik_base.bls12_381 import BLSSecretExponent  # type: ignore
-from klvm_rs import Program  # type: ignore
+from clvk_rs import Program  # type: ignore
 from chiklisp_puzzles import load_puzzle
 
-import klvm_tools_rs  # type: ignore
+import clvk_tools_rs  # type: ignore
 
 from chiklisp_stdlib import NIGHTLY_INCLUDE_DIRECTORY, STABLE_INCLUDE_DIRECTORY
 
@@ -24,7 +24,7 @@ def compile_clsp(program_str: str, search_paths: List[PathLike]) -> Program:
     out = tempfile.NamedTemporaryFile()
     in_file.write(program_str)
     in_file.flush()
-    klvm_tools_rs.compile_klvm(
+    clvk_tools_rs.compile_clvk(
         in_file.name, out.name, search_paths=[str(_) for _ in search_paths]
     )
     with open(out.file.name, "r") as f:
